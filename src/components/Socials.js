@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 //import icons
 
 import { ImInstagram, ImLinkedin, ImGithub } from "react-icons/im";
 
+// import context
+import { CursorContext } from "../context/CursorContext";
+
 const Socials = () => {
+  const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
   return (
-    <div className="hidden xl:flex ml-24">
+    <div
+      onMouseEnter={mouseEnterHandler}
+      onMouseLeave={mouseLeaveHandler}
+      className="hidden xl:flex ml-24"
+    >
       <ul className="flex gap-x-4">
         <li>
           <a href="https://www.instagram.com/the25thwanderer/">
