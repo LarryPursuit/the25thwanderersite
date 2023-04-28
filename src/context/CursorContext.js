@@ -17,17 +17,20 @@ const CursorProvider = ({ children }) => {
   useEffect(() => {
     if (!mobileViewportIsActive) {
       const move = (e) => {
-        setCursorPos({ x: e.clientX, y: e.clientY });
+        setCursorPos({
+          x: e.clientX,
+          y: e.clientY,
+        });
       };
       window.addEventListener("mousemove", move);
-      // remove event listener on cleanup
+      // remove event
       return () => {
         window.removeEventListener("mousemove", move);
       };
     } else {
       setCursorBG("none");
     }
-  });
+  }, [mobileViewportIsActive]);
 
   // cursor variants
   const cursorVariants = {
@@ -47,7 +50,7 @@ const CursorProvider = ({ children }) => {
     none: {
       width: 0,
       height: 0,
-      backgroundColor: "rgba(255, 255, 255, 0)",
+      backgroundColor: "rgba(255,255,255, 1)",
     },
   };
 
@@ -55,7 +58,7 @@ const CursorProvider = ({ children }) => {
   const mouseEnterHandler = () => {
     setCursorBG("text");
   };
-  // mouse Leaver handler
+  // mouse leaver handler
   const mouseLeaveHandler = () => {
     setCursorBG("default");
   };
